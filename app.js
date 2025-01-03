@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://e-commerce-self-seven.vercel.app/",
+        credentials: true
+    }
+));
 
 app.use(express.json());
 app.use(helmet());
