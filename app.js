@@ -12,22 +12,8 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-app.use(cors({
-    origin: "https://e-commerce-self-seven.vercel.app/",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
-    exposedHeaders: ["Set-Cookie"],
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-}));
+app.use(cors());
 
-// Also add these headers for extra security
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', 'https://e-commerce-self-seven.vercel.app/');
-    next();
-});
 app.use(express.json());
 app.use(helmet());
 app.use(ExpressMongoSanitize());
